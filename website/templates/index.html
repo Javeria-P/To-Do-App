@@ -20,18 +20,28 @@
             </div>
         </form>
         <hr>
-
+        <div class="container">
         {% for todo in todo_list %}
-        <div>
-            <p>{{todo.id}} : {{ todo.task }} : {{ todo.complete }}</p>
+        <div class="wrapper">
+            <div class="task">
+            <p>{{todo.id}} : {{ todo.task }} </p>
+            </div>  
         {% if todo.complete==False %}
-        <p>Task Incomplete. <a href="/update/{{ todo.id }}">Mark as complete?</a></p>
-        {% else %}
-            <P>Task Complete</P>
-        {% endif %}
+        <div  class="incomplete"> 
+        <p> <a href="/update/{{ todo.id }}">Mark task as complete?</a></p>
         </div>
+        {% else %}
+        <div  class="complete">
+            <p>Task Complete</p>
+        </div>
+        {% endif %}
+        <div class="delete">
     <p><a href="/delete/{{ todo.id }}">Delete Task?</a></p>
+        </div>
+        </div>
+
     {% endfor %}
+        </div>
     {% if message %}
         <p>{{message}}</p>
     {% endif %}
